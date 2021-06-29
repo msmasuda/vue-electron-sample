@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/table',
+    redirect: '/csv',
     children: [
       {
         path: '/spread',
@@ -21,6 +21,12 @@ const routes = [
         component: () => import('@/views/Table.vue'),
         name: 'Table',
         meta: { title: 'table', icon: '', affix: true }
+      },
+      {
+        path: '/csv',
+        component: () => import('@/views/CSV.vue'),
+        name: 'CSV',
+        meta: { title: 'csv', icon: '', affix: true }
       }
     ]
   },

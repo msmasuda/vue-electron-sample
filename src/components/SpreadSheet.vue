@@ -24,18 +24,34 @@
         }
       }
     },
-    computed: {
-      jExcelOptions() {
-        return {
+    // computed: {
+    //   jExcelOptions() {
+    //     return {
+    //       data: this.data,
+    //       columns: this.columns,
+    //       search: true,
+    //       pagination: 40,
+    //     };
+    //   }
+    // },
+    mounted: function() {
+      const options = {
           data: this.data,
           columns: this.columns,
           search: true,
           pagination: 40,
-        };
       }
+      const jExcelObj = jexcel(this.$refs["spreadsheet"], options);
+      Object.assign(this, { jExcelObj });
     },
-    mounted: function() {
-      const jExcelObj = jexcel(this.$refs["spreadsheet"], this.jExcelOptions);
+    updated: function() {
+      const options = {
+          data: this.data,
+          columns: this.columns,
+          search: true,
+          pagination: 40,
+      }
+      const jExcelObj = jexcel(this.$refs["spreadsheet"], options);
       Object.assign(this, { jExcelObj });
     }
   }
